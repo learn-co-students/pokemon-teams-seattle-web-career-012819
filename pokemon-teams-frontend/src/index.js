@@ -16,14 +16,43 @@ fetch(TRAINERS_URL)
 });
 
 //document.body.appendChild(main);
-function createPokeList(info, ul) {
-
-  for (const poke of info["pokemons"]) {
+function addPokemon(poke, ul) {
+  if (!poke['error'] == 'Party is Full!') {
     let newLi = document.createElement("li");
     let releaseButton = document.createElement('button');
     newLi.textContent = `${poke["nickname"]}`;
     releaseButton.textContent = "Release";
     releaseButton.classList.add('release');
+    releaseButton.addEventListener('click', (event) => {
+      event.preventDefault();
+
+      fetch(POKEMONS_URL + '/' + poke['id'], {
+        method: 'DELETE'
+      })
+      .then(response => response.json());
+      event.target.parentElement.remove();
+    });
+    newLi.appendChild(releaseButton);
+    ul.appendChild(newLi);
+  }
+};
+
+function createPokeList(info, ul) {
+  for (const poke of info) {
+    let newLi = document.createElement("li");
+    let releaseButton = document.createElement('button');
+    newLi.textContent = `${poke["nickname"]}`;
+    releaseButton.textContent = "Release";
+    releaseButton.classList.add('release');
+    releaseButton.addEventListener('click', (event) => {
+      event.preventDefault();
+
+      fetch(POKEMONS_URL + '/' + poke['id'], {
+        method: 'DELETE'
+      })
+      .then(response => response.json());
+      event.target.parentElement.remove();
+    });
     newLi.appendChild(releaseButton);
     ul.appendChild(newLi);
   }
@@ -55,12 +84,12 @@ function createPokemonCard(info) {
     })
     .then(response => response.json())
     .then(json => {
-      createPokeList(json, ul);
+      addPokemon(json, ul);
       debugger
     })
   })
 
-  createPokeList(info, ul);
+  createPokeList(info['pokemons'], ul);
 
   trainer.classList.add('card');
   trainer.appendChild(p);
