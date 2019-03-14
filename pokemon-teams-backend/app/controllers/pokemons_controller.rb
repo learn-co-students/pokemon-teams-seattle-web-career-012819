@@ -2,7 +2,6 @@ require 'faker'
 
 class PokemonsController < ApplicationController
   def create
-    puts 'it got here!!!!!!!!!'
     unless pokemon_params[:trainer_id].nil?
       default = {}
 
@@ -37,7 +36,6 @@ class PokemonsController < ApplicationController
 
   private
   def pokemon_params
-    puts 'in params?????????'
     params.require(:pokemon).permit(:nickname, :species, :trainer_id)
   end
 end
