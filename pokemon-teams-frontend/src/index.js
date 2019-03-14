@@ -21,13 +21,13 @@ fetch(TRAINERS_URL)
     //Add Pokemon Button
     //Create Pokemon Button
     const addPokemonButton = document.createElement('button');
-    addPokemonButton.className = 'release';
     addPokemonButton.textContent = "Add Pokemon";
     const pokemonUl = document.createElement('ul');
 
     //Add Pokemon Button Event Listener
     addPokemonButton.addEventListener('submit', (ev) => {
       ev.preventDefault();
+      
     });
 
     //HTML Interactions - Trainer Level
@@ -48,6 +48,7 @@ fetch(TRAINERS_URL)
     
       //Create Release Button
       const releaseButton = document.createElement('button');
+      releaseButton.className = 'release';
       releaseButton.textContent = "Release";
       const li = document.createElement('li');
       li.textContent = `${pokeNickname} (${pokeSpecies})`;
@@ -59,7 +60,6 @@ fetch(TRAINERS_URL)
        releaseButton.addEventListener('click', () => {
         li.remove();
       });
-
     });
   })
 })
