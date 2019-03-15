@@ -1,9 +1,6 @@
 const BASE_URL = 'http://localhost:3000';
 const TRAINERS_URL = `${BASE_URL}/trainers`;
 const POKEMONS_URL = `${BASE_URL}/pokemons`;
-// document.addEventListener('DOMContentLoaded', createPokemonCard);
-// const pokemonNicknamesObject = {};
-// const pokemonSpeciesObject = {};
 
 //Fetch Trainers
 fetch(TRAINERS_URL)
@@ -44,16 +41,6 @@ fetch(TRAINERS_URL)
 						li.appendChild(releaseButton);
 						card.appendChild(pokemonUl);
 
-						//Release Pokemon Button Listener
-						//releaseButton.addEventListener('click', () => {
-						// li.remove();
-						// console.log(json);
-						// fetch(POKEMONS_URL + '/' + trainer.trainer_id, {
-						// 	method: 'DELETE'
-						// })
-						// 	.then((response) => response.json())
-						// 	.then((json) => console.log(json));
-						//});
 					});
 			});
 
