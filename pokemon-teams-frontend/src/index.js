@@ -6,18 +6,15 @@ fetch(TRAINERS_URL)
 .then(response => response.json())
 .then(json => {
   json.forEach(trainer => {
-    // let info = {
-    //   name: trainer['name'],
-    //   id: trainer['id'],
-    //   pokemonList: trainer['pokemons']
-    // }
     createPokemonCard(trainer);
   })
 });
 
+function removePokemon(event) {};
+
 //document.body.appendChild(main);
 function addPokemon(poke, ul) {
-  if (!poke['error'] == 'Party is Full!') {
+  if (!poke['error']) {
     let newLi = document.createElement("li");
     let releaseButton = document.createElement('button');
     newLi.textContent = `${poke["nickname"]}`;
