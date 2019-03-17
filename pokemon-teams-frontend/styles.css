@@ -21,6 +21,7 @@ main {
   grid-gap: 20px;
   padding-top: 10px;
   padding-bottom: 30px;
+  background-color: "red";
 }
 
 div.card {

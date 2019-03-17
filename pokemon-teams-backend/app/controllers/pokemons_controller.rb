@@ -2,6 +2,7 @@ require 'faker'
 
 class PokemonsController < ApplicationController
   def create
+  
     unless pokemon_params[:trainer_id].nil?
       default = {}
 
@@ -22,6 +23,7 @@ class PokemonsController < ApplicationController
     else
       render json: { error: "Trainer not found"}, status: 404
     end
+
   end
 
   def destroy
